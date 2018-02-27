@@ -3,7 +3,6 @@
 import lmdb
 import argparse
 import sys
-from pyblake2 import blake2b
 
 def db_list():
    global db
