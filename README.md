@@ -9,7 +9,7 @@ LMDB allows for multiple concurrent readers but only a single writer. As this to
 
 This script uses [py-lmdb](https://github.com/dw/py-lmdb) and hopes to eventually emulate the design of the included 'tool.py'.
 
-**NOTE:**You must symlink your data.ldb to data.mdb in your RaiBlocks directory for this script to work (e.g. `ln -s data.ldb data.mdb`).
+**NOTE:** You must symlink your data.ldb to data.mdb in your RaiBlocks directory for this script to work (e.g. `ln -s data.ldb data.mdb`).
 
 ## Dependencies
 
