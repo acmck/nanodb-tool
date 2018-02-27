@@ -101,7 +101,7 @@ if args.values is True:
       values_dump(db)
 
 if args.decode is True:
-   supported_dbs = ['open','receive','send','change']
+   supported_dbs = ['open','change']
    open_env()
    for db in db_list():
       if str(db) in supported_dbs:
