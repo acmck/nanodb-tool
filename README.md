@@ -5,8 +5,11 @@ Python script allowing exports from nano's LMDB database.
 
 Nano provides an RPC interface that allows for similar functionality to this script, however it is slow and unreliable.
 
+LMDB allows for multiple concurrent readers but only a single writer. As this tool is for exporting blocks, the lmdb environment is opened read-only. This means the tool can be run against the database while the node is running.
+
 This script uses [py-lmdb](https://github.com/dw/py-lmdb) and hopes to eventually emulate the design of the included 'tool.py'.
 
+**NOTE:**You must symlink your data.ldb to data.mdb in your RaiBlocks directory for this script to work (e.g. `ln -s data.ldb data.mdb`).
 
 ## Dependencies
 
