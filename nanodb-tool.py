@@ -3,6 +3,10 @@
 import lmdb
 import argparse
 import sys
+import os
+
+lmdb_datadir = "Raiblocks"
+lmdb_dbfile = "data.ldb"
 
 def db_list():
    global db
@@ -16,7 +20,7 @@ def db_list():
 
 def open_env():
    global env,txn
-   env = lmdb.open(env_path, readonly=True, max_dbs=128)
+   env = lmdb.open(env_path, subdir=False, readonly=True, max_dbs=128)
    txn = env.begin(buffers=True)
 
 def values_dump(db):
@@ -78,11 +82,10 @@ args = make_argparser()
 if not args:
    sys.stderr.write('nanodb-tool: Please specify a command (see --help)\n')
    raise SystemExit(1)
-if not args.env:
-   sys.stderr.write('nanodb-tool: Please specify environment (--env)\n')
-   raise SystemExit(1)
-
-env_path = args.env
+if args.env:
+   env_path = os.path.join(args.env, lmdb_dbfile)
+else:
+   env_path = os.path.join(os.environ['HOME'], lmdb_datadir, lmdb_dbfile) 
 
 if args.records is True:
    open_env()
